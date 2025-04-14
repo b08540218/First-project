@@ -1,47 +1,42 @@
 package banking;
 
+import java.util.Scanner;
 
-public class BankingSystemMain extends AccountManager{	
-
-//	public static Scanner scan = new Scanner(System.in);
-	
-//	static String BankNumber;
-//	static String Name;
-//	int Money;
-//	
+public class BankingSystemMain {
 	public static void main(String[] args) {
-		//Scanner scan = new Scanner(System.in);
+		AccountManager manager = new AccountManager();
+		Scanner sc = new Scanner(System.in);
 		
-//		Account handler = new Account(50);
-		AccountManager handler = new AccountManager();
 		while (true) {
-			showMenu();
 			try {
+				manager.showMenu();
+				System.out.println("선택: ");
+				int choice = Integer.parseInt(sc.nextLine());
 				
-				int choice = sc.nextInt();
-				sc.nextLine();
-//				scan.nextInt(); //오류코드
 				switch (choice) {
-				case 1:
-					handler.makeAccount();
+				case ICustomDefine.MAKE:
+					manager.createAccount();
 					break;
-				case 2:
-					handler.depositMoney();
+				case ICustomDefine.DEPOSIT:
+					manager.depositMoney();
 					break;
-				case 3:
-					handler.withdrawMoney();
+				case ICustomDefine.WITHDRAW:
+					manager.withdrawMoney();
 					break;
-				case 4:
-					handler.showAccInfo();
+				case ICustomDefine.INQUIRE:
+					manager.showAllAccounts();
 					break;
-				case 5:
-					System.out.println("프로그램종료");
+				case ICustomDefine.EXIT:
+					System.out.println("프로그램을 종료합니다.");
 					return;
+				default:
+					throw new MenuSelectException("1~5 사이의 숫자만 입력해 주세요.");
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			} catch (NumberFormatException e) {
+				System.out.println("숫자만 입력하세요.");
+			} catch (MenuSelectException e) {
+				System.out.println(e.getMessage());
 			}
-			
 		}
 	}
 }
