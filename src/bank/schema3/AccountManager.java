@@ -12,12 +12,14 @@ public class AccountManager implements ICustomDefine{
 		static int accCnt = 0;
 		
 	public static void showMenu() {
-		System.out.println("1. 계좌계설");
-		System.out.println("2. 입금");
-		System.out.println("3. 출금");
-		System.out.println("4. 전체계좌정보출력");
-		System.out.println("5. 프로그램종료");
-	}
+			System.out.println("1. 계좌개설");
+			System.out.println("2. 입금");
+			System.out.println("3. 출금");
+			System.out.println("4. 전체계좌정보출력");
+			System.out.println("5. 프로그램종료");
+			
+		} 
+		
 	
 	// 계좌개설을 위한 함수
 	public static void makeAccount() {
@@ -45,12 +47,15 @@ public class AccountManager implements ICustomDefine{
 			switch (grade) {
 			case "A":
 				creditRate = A;
+				System.out.println("신용등급>A");
 				break;
 			case "B":
 				creditRate = B;
+				System.out.println("신용등급>B");
 				break;
 			case "C":
 				creditRate = C;
+				System.out.println("신용등급>C");
 				break;
 			}
 			Account ac = new HighCreditAccount(a, n, b, interest, creditRate);

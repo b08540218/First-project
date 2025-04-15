@@ -45,12 +45,15 @@ public class AccountManager implements ICustomDefine{
 			switch (grade) {
 			case "A":
 				creditRate = A;
+				System.out.println("신용등급>A");
 				break;
 			case "B":
 				creditRate = B;
+				System.out.println("신용등급>B");
 				break;
 			case "C":
 				creditRate = C;
+				System.out.println("신용등급>C");
 				break;
 			}
 			Account ac = new HighCreditAccount(a, n, b, interest, creditRate);

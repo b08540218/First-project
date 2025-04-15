@@ -1,13 +1,13 @@
 package bank.schema3;
 
-public class Account {
+abstract class Account {
 	//계좌번호(String형), 이름(String형), 잔액(int형) 
 	protected String accNum;
 	protected String name;
 	protected int balance;
 	protected int interest;
-	//생성자
 	
+	//생성자
 	public Account(String accNum, String name, int balance, int interest) {
 		super();
 		this.accNum = accNum;
@@ -46,9 +46,6 @@ public class Account {
 	
 	
 	//toString 오버라이딩
-
-
-
 
 	@Override
 	public String toString() {
