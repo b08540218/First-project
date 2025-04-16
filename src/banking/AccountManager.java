@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AccountManager implements ICustomDefine{
+<<<<<<< HEAD
 	private ArrayList<Account> accounts = new ArrayList<Account>();
+=======
+	private ArrayList<Account> accounts = new ArrayList<>();
+>>>>>>> branch 'main' of https://github.com/b08540218/1-.git
 	private Scanner sc = new Scanner(System.in);
 	
 	public void showMenu()	{
@@ -26,7 +30,11 @@ public class AccountManager implements ICustomDefine{
         String name = sc.nextLine();
         System.out.print("잔액: ");
         int balance = Integer.parseInt(sc.nextLine());
+<<<<<<< HEAD
         System.out.print("이자율%: ");
+=======
+        System.out.print("이자율: ");
+>>>>>>> branch 'main' of https://github.com/b08540218/1-.git
         int interest = Integer.parseInt(sc.nextLine());
         
         if (choice == 1) {
@@ -47,8 +55,12 @@ public class AccountManager implements ICustomDefine{
 				break;
 			}
 			accounts.add(new HighCreditAccount(accNo, name, balance, interest, creditRate));
+<<<<<<< HEAD
 			System.out.println("계좌가 개설되었습니다.");
+=======
 		}
+        
+        System.out.println("계좌가 개설되었습니다.");
 	}
 	
 	public void depositMoney() {
@@ -80,14 +92,67 @@ public class AccountManager implements ICustomDefine{
 			}
 		} else {
 			System.out.println("계좌를 찾을 수 없습니다.");
+>>>>>>> branch 'main' of https://github.com/b08540218/1-.git
 		}
 	}
+	
+<<<<<<< HEAD
+	public void depositMoney() {
+		System.out.print("계좌번호: ");
+        String accNo = sc.nextLine();
+        System.out.print("입금액: ");
+        int amount = Integer.parseInt(sc.nextLine());
+
+        Account acc = findAccount(accNo);
+        if (acc != null) {
+			acc.deposit(amount);
+			System.out.println("입금 완료.");
+		} else {
+			System.out.println("계좌를 찾을 수 없습니다.");
+=======
+	public void showAllAccounts() {
+		for (Account acc : accounts) {
+			acc.showAccountInfo();
+>>>>>>> branch 'main' of https://github.com/b08540218/1-.git
+		}
+<<<<<<< HEAD
+	}
+	public void withdrawMoney() {
+		System.out.print("계좌번호: ");
+		String accNo = sc.nextLine();
+		System.out.print("출금액: ");
+		int amount = Integer.parseInt(sc.nextLine());
+		
+		Account acc= findAccount(accNo);
+		if (acc != null) {
+			if (acc.withdraw(amount)) {
+				System.out.println("출금 완료");
+			} else {
+				System.out.println("잔액 부족.");
+			}
+		} else {
+			System.out.println("계좌를 찾을 수 없습니다.");
+		}
+=======
+>>>>>>> branch 'main' of https://github.com/b08540218/1-.git
+	}
+<<<<<<< HEAD
 	
 	public void showAllAccounts() {
 		for (Account acc : accounts) {
 			acc.showAccountInfo();
 		}
+=======
+	private Account findAccount(String accNo) {
+		for (Account acc : accounts) {
+			if (acc.getAccountNumber().equals(accNo)) {
+				return acc;
+			}
+		}
+		return null;
+>>>>>>> branch 'main' of https://github.com/b08540218/1-.git
 	}
+<<<<<<< HEAD
 	private Account findAccount(String accNo) {
 		for (Account acc : accounts) {
 			if (acc.getAccountNumber().equals(accNo)) {
@@ -96,6 +161,8 @@ public class AccountManager implements ICustomDefine{
 		}
 		return null;
 	}
+=======
+>>>>>>> branch 'main' of https://github.com/b08540218/1-.git
 }
 
 

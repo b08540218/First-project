@@ -1,6 +1,10 @@
 package banking;
 
+<<<<<<< HEAD
 public class HighCreditAccount {
+=======
+public class HighCreditAccount extends NormalAccount{
+>>>>>>> branch 'main' of https://github.com/b08540218/1-.git
 	private int creditRate;
 	
 	public HighCreditAccount(String accountNumber, String ownerName, int balance, int interestRate, int creditRate) {
