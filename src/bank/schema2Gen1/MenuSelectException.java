@@ -1,4 +1,4 @@
-package bank.schema3;
+package bank.schema2Gen1;
 
 public class MenuSelectException {
 

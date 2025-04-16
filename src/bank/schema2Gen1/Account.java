@@ -1,4 +1,4 @@
-package bank.schema3;
+package bank.schema2Gen1;
 
 abstract class Account {
 	//계좌번호(String형), 이름(String형), 잔액(int형) 
@@ -6,6 +6,7 @@ abstract class Account {
 	protected String name;
 	protected int balance;
 	protected int interest;
+//	private String grade2;
 	
 	//생성자
 	public Account(String accNum, String name, int balance, int interest) {
@@ -14,6 +15,7 @@ abstract class Account {
 		this.name = name;
 		this.balance = balance;
 		this.interest = interest;
+//		this.grade2 = grade2;
 	}
 	
 	
@@ -43,18 +45,35 @@ abstract class Account {
 	public void setInterest(int interest) {
 		this.interest = interest;
 	}
+//	public String getGrade() {
+//		return grade2;
+//	}
+//	public void setGrade(String grade) {
+//		this.grade2 = grade;
+//	}
 	
 	
 	//toString 오버라이딩
 
+	
 	@Override
 	public String toString() {
-		return "Account [accNum(계좌번호)=" + accNum + ", name(이름)=" + name + ", balance(잔고)=" + balance + ", interest(이자율)=" + interest + "]";
+		return "[계좌번호="+ accNum + 
+				", 이름="+ name + 
+				", 잔고=" + balance+ 
+				", 이자율=" + interest +"%]";
 	}
+//	@Override
+//	public String toString() {
+//		return "[계좌번호="+ accNum + 
+//				", 이름="+ name + 
+//				", 잔고=" + balance+ 
+//				", 이자율=" + interest +"%, "+
+//				"신용등급:"+ grade2+ "]";
+//	}
 
-//	 private static final double BASIC_INTEREST_RATE = 0.01;
 
-	public void deposit(int amount) {
+	public void deposit(int amount) { //입 금 이 자
 		int creditRate = 0;
 		int interest = (int)(balance * creditRate);
         balance = balance + interest + amount;
@@ -62,7 +81,7 @@ abstract class Account {
 
 
 
-	public void showAccountInfo() {
+	public void showAccountInfo() {//계좌정보 출력
 		System.out.println("계좌번호: " + accNum);
         System.out.println("고객이름: " + name);
         System.out.println("잔고: " + balance);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AccountManager implements ICustomDefine{
-	private ArrayList<Account> accounts = new ArrayList<>();
+	private ArrayList<Account> accounts = new ArrayList<Account>();
 	private Scanner sc = new Scanner(System.in);
 	
 	public void showMenu()	{
@@ -46,7 +46,7 @@ public class AccountManager implements ICustomDefine{
 				creditRate = C;
 				break;
 			}
-//			accounts.add(new HighCreditAccount(accNo, name, balance, interest, creditRate));
+			accounts.add(new HighCreditAccount(accNo, name, balance, interest, creditRate));
 			System.out.println("계좌가 개설되었습니다.");
 		}
 	}

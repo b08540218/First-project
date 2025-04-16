@@ -1,4 +1,4 @@
-package bank.schema3;
+package bank.schema2Gen1;
 
 import java.util.Scanner;
 
@@ -34,39 +34,33 @@ public class AccountManager implements ICustomDefine{
 		int b = scan.nextInt();
 		System.out.print("이자율%: ");
 		int interest = scan.nextInt();
+//		scan.nextLine();
 		
 		if (choice == 1) {
 			Account ac = new NormalAccount(a, n, b, interest);
 			accounts[accCnt++] = ac;
-//			System.out.println("신규계좌 개설 완료");
-//			Account ac = new NormalAccount(a, n, b, interest));
+			System.out.println("신규계좌 개설 완료");
 		} else {
-			System.out.println("신용듭급(A, B, C): ");
-			String grade = scan.nextLine().toUpperCase();
+			String grade = "";
 			int creditRate = 0;
-			switch (grade) {
-			case "A":
+			if (interest >= A) {
 				creditRate = A;
-				System.out.println("신용등급>A");
-				break;
-			case "B":
+				grade = "A";
+			} else if (interest >= B) {
 				creditRate = B;
-				System.out.println("신용등급>B");
-				break;
-			case "C":
+				grade = "B";
+			} else {
 				creditRate = C;
-				System.out.println("신용등급>C");
-				break;
+				grade = "C";
 			}
-			Account ac = new HighCreditAccount(a, n, b, interest, creditRate);
+			
+			System.out.println("신용등급>"+grade+"(추가이자율: "+ creditRate + "%)");
+			Account ac = new HighCreditAccount(a, n, b, interest,grade);
 			accounts[accCnt++] = ac;
 			//신규계좌 생성 및 추가
-//			accounts.add(HighCreditAccount(a, n, b, interest, creditRate));
-//			System.out.println("계좌가 개설되었습니다.");
+			System.out.println("신규계좌 개설 완료");
 		}
-		System.out.println("신규계좌 개설 완료");
 	}
-	
 	
 	// 입    금
 	public static void depositMoney()  {

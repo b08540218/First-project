@@ -1,12 +1,12 @@
-package bank.schema3;
+package bank.schema2Gen1;
 
-import java.util.InputMismatchException;
+//import java.util.InputMismatchException;
 
 public class BankingSystemMain {
 	
 	
 	public static void main(String[] args){
-		try {
+//		try {
 			while(true) {
 				//메뉴출력
 				AccountManager.showMenu();
@@ -42,9 +42,10 @@ public class BankingSystemMain {
 					break;
 				}//swith 끝
 			}//while 끝
-		} catch (InputMismatchException e) {
-			System.out.println("숫자만 입력하세요.");
-			e.printStackTrace();
-		}//try 끝
+		
+//		catch (InputMismatchException e) {
+//			System.out.println("숫자만 입력하세요.");
+//			e.printStackTrace();
+//		}//try 끝
 	}//main끝
 }//class끝
