@@ -5,7 +5,7 @@ public class Account {
 	private String accNum;
 	private String name;
 	private int balance;
-	//생성자
+	//생성자 
 	
 	public Account(String accNum, String name, int balance) {
 		super();
