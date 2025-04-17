@@ -46,6 +46,10 @@ public class BankingSystemMain {
 				System.out.println("계좌정보출력");
 				AccountManager.showAccInfo();
 				break;
+			case ICustomDefine.DELETE:
+				System.out.println("계좌정보삭제");
+				AccountManager.deleteAccount();
+				break;
 			case ICustomDefine.EXIT:
 				//프로그램종료
 //				return;
