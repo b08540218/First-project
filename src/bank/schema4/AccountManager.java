@@ -191,6 +191,7 @@ public class AccountManager implements ICustomDefine{
 		System.out.println("해당 계좌를 찾을 수 없습니다.");
 		return null;
 	}
+	//매뉴선택 1~6번까지만 선택 가능하게 하기
 	public static int getMenuChoice() throws MenuSelectException {
 		try {
 			System.out.println("메뉴선택: ");

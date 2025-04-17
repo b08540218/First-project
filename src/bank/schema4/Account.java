@@ -45,15 +45,8 @@ abstract class Account {
 	public void setInterest(int interest) {
 		this.interest = interest;
 	}
-//	public String getGrade() {
-//		return grade2;
-//	}
-//	public void setGrade(String grade) {
-//		this.grade2 = grade;
-//	}
 	
 	
-	//toString 오버라이딩
 
 	
 	@Override

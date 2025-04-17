@@ -11,7 +11,6 @@ public class BankingSystemMain {
 			try {
 			AccountManager.showMenu();
 			System.out.print("메뉴입력: ");
-//			int key = AccountManager.scan.nextInt();
 			
 //			AccountManager.scan.nextLine();//버퍼에 남은 엔터키 제거
 			
@@ -46,12 +45,13 @@ public class BankingSystemMain {
 				System.out.println("계좌정보출력");
 				AccountManager.showAccInfo();
 				break;
+				//계좌정보삭제
 			case ICustomDefine.DELETE:
 				System.out.println("계좌정보삭제");
 				AccountManager.deleteAccount();
 				break;
-			case ICustomDefine.EXIT:
 				//프로그램종료
+			case ICustomDefine.EXIT:
 //				return;
 				System.exit(0);
 				break;

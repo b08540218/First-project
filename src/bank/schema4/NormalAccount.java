@@ -7,19 +7,10 @@ package bank.schema4;
  */
 public class NormalAccount extends Account{
 	
-	
-	
-
-	
 public NormalAccount(String accNum, String name, int balance, int interest) {
 		super(accNum, name, balance, interest);
 	}
-//	public NormalAccount(String accNum, String name, int balance, int interest) {
-//		super(accNum, name, balance, interest);
-//		this.interest = interest;
-//	}
-	
-	
+
 	@Override
 	public void deposit(int amount) {
 		balance += amount + (amount * interest / 100);
