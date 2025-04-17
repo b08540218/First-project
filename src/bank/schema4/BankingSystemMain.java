@@ -22,7 +22,7 @@ public class BankingSystemMain {
 			int key = Integer.parseInt(input);
 			
 			if (key < ICustomDefine.MAKE || key > ICustomDefine.EXIT) {
-				throw new MenuSelectException("메뉴는 1~5 사이의 숫자만 입력 가능합니다.");
+				throw new MenuSelectException("메뉴는 1~6 사이의 숫자만 입력 가능합니다.");
 			}
 			switch (key) {
 			case ICustomDefine.MAKE:
