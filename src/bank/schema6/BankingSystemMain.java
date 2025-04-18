@@ -14,8 +14,6 @@ public class BankingSystemMain {
 			AccountManager.showMenu();
 			System.out.print("메뉴입력: ");
 			
-//			AccountManager.scan.nextLine();//버퍼에 남은 엔터키 제거
-			
 			String input = AccountManager.scan.nextLine();
 			if (!input.matches("[0-9]+")) {
 				throw new InputMismatchException("숫자만 입력 가능합니다.");
@@ -34,12 +32,12 @@ public class BankingSystemMain {
 				break;
 			case ICustomDefine.DEPOSIT:
 				//입금
-				System.out.println("입금");
+				System.out.println("입   금");
 				AccountManager.depositMoney();
 				break;
 			case ICustomDefine.WITHDRAW:
 				//출금
-				System.out.println("출금");
+				System.out.println("출   금");
 				AccountManager.withdrawMoney();
 				break;
 			case ICustomDefine.INQUIRE:

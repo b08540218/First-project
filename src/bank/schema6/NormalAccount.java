@@ -21,4 +21,3 @@ public NormalAccount(String accNum, String name, int balance, int interest) {
 		System.out.println("----------------------------");
 	}
 }
-

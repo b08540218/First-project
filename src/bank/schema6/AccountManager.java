@@ -15,14 +15,10 @@ public class AccountManager implements ICustomDefine{
 	private static final String FILE_NAME = "AcccountInfo.obj";
 	private static final String TEXT_FILE_NAME = "AutoSaveAccount.txt";
 	private static AutoSaver autoSaver;
-//키보드 입력을 위한 인스턴스
+	//키보드 입력을 위한 인스턴스
 	static Scanner scan = new Scanner(System.in);
 	//계좌정보 저장을 위한 컬렉션 
 	static Set<Account> account = new HashSet<>();
-	//계좌정보 저장을 위한 인스턴스배열
-//		static Account[] accounts = new Account[50];
-	//개설된 계좌정보 카운트용 변수
-//		static int accCnt = 0;
 	@SuppressWarnings("unchecked")
 	public static void loadAccountInfo() {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))){
@@ -50,11 +46,11 @@ public class AccountManager implements ICustomDefine{
 	}
 	
 	public static void AutoSaveMenu() {
-		System.out.print("1. 자동저장 ON");
-		System.out.print("   2. 자동저장 OFF  ");
+		System.out.println("1. 자동저장 ON ");
+		System.out.println("2. 자동저장 OFF ");
 		String input = scan.nextLine();
 		if (input.equals("1")) {
-			if (autoSaver != null && autoSaver.isAlive()) {
+			if (autoSaver != null && autoSaver.isAlive()) { //경고메세지 출력
 				System.out.println("이미 자동저장이 실행중입니다.");
 			} else {
 				autoSaver = new AutoSaver(account);
@@ -63,20 +59,19 @@ public class AccountManager implements ICustomDefine{
 				System.out.println("자동저장이 시작되었습니다.");
 			}
 		} else if (input.equals("2")) {
-			if (autoSaver != null && autoSaver.isAlive()) {
+			if (autoSaver != null && autoSaver.isAlive()) { //경고메세지 출력
 				autoSaver.interrupt();
 				System.out.println("자동저장이 중지되었습니다.");
 			} else {
 				System.out.println("자동저장이 실행중이지 않습니다.");
 			}
-		} else {
+		} else { //1 또는 2이외 선택시 출력
 			System.out.println("잘못된 입력입니다. 1 또는 2를 선택(입력)해주세요");
-		}{
-
 		}
 	}
 	
 	public static void showMenu() {
+			System.out.println("===========================");
 			System.out.println("1. 계좌개설");
 			System.out.println("2. 입금");
 			System.out.println("3. 출금");
@@ -84,22 +79,40 @@ public class AccountManager implements ICustomDefine{
 			System.out.println("5. 계좌정보삭제");
 			System.out.println("6. 저장옵션");
 			System.out.println("7. 프로그램종료");
-			
+			System.out.println("===========================");
 		} 
 		
 	
 	// 계좌개설을 위한 함수
 	public static void makeAccount() {
-		System.out.println("1. 보통예금계좌  2. 신용신뢰계좌");
-		int choice =Integer.parseInt(scan.nextLine());
+		int choice = 0; //사용자 선택값을 저장할 변수
 		
+		while (true) {
+	        try {
+	        	System.out.println("===========================");
+	            System.out.println("1. 보통예금계좌  2. 신용신뢰계좌");
+	            System.out.println("선택: ");
+	            String input = scan.nextLine(); 
+	            
+	            
+	            if (!input.equals("1") && !input.equals("2")) {
+	                throw new InputMismatchException("1 또는 2만 입력 가능합니다.");
+	            }
+	            choice = Integer.parseInt(input);
+	            break;
+	        } catch (InputMismatchException e) {
+	            System.out.println("※ 예외: " + e.getMessage());
+	        }
+	    }
+
+		System.out.println("===========================");
 		System.out.print("계좌번호: ");
 		String a = scan.nextLine();
 		System.out.print("이름: ");
 		String n = scan.nextLine();
 		System.out.print("잔고: ");
 		int b = scan.nextInt();
-		System.out.print("이자율%: ");
+		System.out.print("이자율%(정수형태로입력): ");
 		int interest = scan.nextInt();
 		scan.nextLine();
 		
@@ -125,7 +138,10 @@ public class AccountManager implements ICustomDefine{
 			newAcc = new HighCreditAccount(a, n, b, interest,grade);
 		}
 		
-		if (account.contains(newAcc)) {
+		
+		boolean isAdd = account.add(newAcc);
+		
+		if(!isAdd) {
 			System.out.println("중복계좌발견됨. 덮어쓸까요?(y or n): ");
 			String answer = scan.nextLine();
 			if (answer.equalsIgnoreCase("y")) {
@@ -135,11 +151,9 @@ public class AccountManager implements ICustomDefine{
 			} else {
 				System.out.println("신규정보 저장이 취소되었습니다.");
 			}
-		} else {
-			//신규계좌 생성 및 추가
-			account.add(newAcc);
-			System.out.println("신규계좌 개설 완료");
+			return;
 		}
+		System.out.println("신규계좌 개설 완료");
 	}
 	
 	// 입    금
@@ -149,10 +163,9 @@ public class AccountManager implements ICustomDefine{
 		String a= scan.nextLine();
 		Account acc = findAccount(a);
 		if (acc == null) {
-//			System.out.println("해당 계좌가 존재하지 않습니다.");
 			return;
 		}
-		
+		System.out.println("*입금액은 500원 단위로만 입금 가능합니다*");
 		System.out.print("입금액: ");
 		int d = scan.nextInt();
 		scan.nextLine();
@@ -167,14 +180,11 @@ public class AccountManager implements ICustomDefine{
 		}
 		acc.deposit(d);
 		System.out.println("예금이 성공되었습니다.");
-//		findAccount(a).setBalance(findAccount(a).getBalance() + d);
 		} catch (InputMismatchException e) {
 			scan.nextLine();
 			System.out.println("숫자만 입력하세요.");
 		}
 	}
-		
-	
 	
 	// 출    금
 	public static void withdrawMoney() {
@@ -231,7 +241,6 @@ public class AccountManager implements ICustomDefine{
 		String accNum = scan.nextLine();
 		Account acc = findAccount(accNum);
 		if (acc == null) {
-//			System.out.println("해당 계좌를 찾을 수 없습니다.");
 			return;
 		}
 		account.remove(acc);
@@ -248,7 +257,7 @@ public class AccountManager implements ICustomDefine{
 		System.out.println("해당 계좌를 찾을 수 없습니다.");
 		return null;
 	}
-	//매뉴선택 1~6번까지만 선택 가능하게 하기
+	//매뉴선택 1~7번까지만 선택 가능하게 하기
 	public static int getMenuChoice() throws MenuSelectException {
 		try {
 			System.out.println("메뉴선택: ");

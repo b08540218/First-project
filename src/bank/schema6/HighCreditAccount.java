@@ -24,9 +24,8 @@ public class HighCreditAccount extends Account{
 		//신용계좌 : 잔고 + (잔고 * 기본이자) + (잔고 * 추가이자) + 입금액
 		@Override
 		public void deposit(int amount) {
-			final double BASIC_INTEREST_RATE = 0.01;
 			
-		    int baseInterest = (int)(balance * BASIC_INTEREST_RATE);
+		    int baseInterest = (int)(balance * interest);
 		    int extraInterest = (int)(balance * creditRate); 
 		    
 		    int total = balance + baseInterest + extraInterest + amount;

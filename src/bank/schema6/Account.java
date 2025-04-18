@@ -44,6 +44,23 @@ abstract class Account implements Serializable{
 		this.interest = interest;
 	}
 	
+	
+	
+	//중복계좌확인 오버라이딩
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true; //같은 객체이면 true
+		if (obj == null || getClass() != obj.getClass()) //null 또는 다른 클래스면 false 
+			return false;
+		Account otAccount = (Account) obj;
+		return accNum.equals(otAccount.accNum); //계좌번호가 같으면 true
+	}
+	
+	@Override
+	public int hashCode() {
+		return accNum.hashCode(); //계좌번호를 기준으로 해시 생성
+	}
+
 	@Override
 	public String toString() {
 		return "계좌번호="+ accNum + 

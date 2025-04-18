@@ -20,12 +20,12 @@ public class AutoSaver extends Thread{
 		while (true) {
 			try {
 				SaveFile();
-				Thread.sleep(5000);
+				Thread.sleep(5000); //자동저장 5초에 한번씩 출력
 			} catch (InterruptedException e) {
-				System.out.println("***자동저장을 종료합니다.AutiSaver***");
+				System.out.println("***자동저장을 종료합니다***");
 				break;
 			}catch (IOException e) {
-				System.out.println("***자동저장중 오류 발생***");
+				System.out.print("***자동저장중 오류 발생***");
 				e.printStackTrace();
 			}
 		}
@@ -37,6 +37,6 @@ public class AutoSaver extends Thread{
 				writer.newLine();
 			}
 		}
-		System.out.println("자동저장 완료: " + accounts.size()+ "건");
+		System.out.printf("\n자동저장 완료: " + accounts.size()+ "건 ");
 	}
 }
