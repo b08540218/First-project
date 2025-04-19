@@ -61,12 +61,12 @@ public class AccountManager implements ICustomDefine{
 		} else if (input.equals("2")) {
 			if (autoSaver != null && autoSaver.isAlive()) { //경고메세지 출력
 				autoSaver.interrupt();
-				System.out.println("자동저장이 중지되었습니다.");
+				System.out.println("※ 자동저장이 중지되었습니다.");
 			} else {
-				System.out.println("자동저장이 실행중이지 않습니다.");
+				System.out.println("※ 자동저장이 실행중이지 않습니다.");
 			}
 		} else { //1 또는 2이외 선택시 출력
-			System.out.println("잘못된 입력입니다. 1 또는 2를 선택(입력)해주세요");
+			System.out.println("※ 잘못된 입력입니다. 1 또는 2를 선택(입력)해주세요");
 		}
 	}
 	

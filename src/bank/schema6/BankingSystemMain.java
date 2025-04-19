@@ -16,7 +16,7 @@ public class BankingSystemMain {
 			
 			String input = AccountManager.scan.nextLine();
 			if (!input.matches("[0-9]+")) {
-				throw new InputMismatchException("숫자만 입력 가능합니다.");
+				throw new InputMismatchException("※ 숫자만 입력 가능합니다.");
 			}
 			
 			int key = Integer.parseInt(input);
