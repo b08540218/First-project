@@ -13,10 +13,13 @@ public NormalAccount(String accNum, String name, int balance, int interest) {
 
 	@Override
 	public void deposit(int amount) {
+		//단순 이자 계산을 포함해서 잔고에 반영한다.
 		balance += amount + (amount * interest / 100);
 	}
+	
 	@Override
 	public void showAccountInfo() {
+		//이자율 정보 출력
 		System.out.println("이자율%: "+  interest + "%");
 		System.out.println("----------------------------");
 	}

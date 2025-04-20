@@ -9,6 +9,7 @@ A,B,C 등급별로 각각 기본이율에 7%, 4%, 2%의 이율을 추가로 제�
 
  */
 public class HighCreditAccount extends Account{
+		//신용등급에 따라 적용되는 추가 이율
 		private int creditRate;
 		private String grade;
 	
@@ -16,6 +17,8 @@ public class HighCreditAccount extends Account{
 		public HighCreditAccount(String accNum, String name, int balance, int interest, String grade) {
 				super(accNum, name, balance, interest);
 				this.grade = grade;
+				
+				//신용등급에 따라 추가 이율 지정, 인터페이스 ICustomDefine(인터페이스)의 상수를 사용
 				if (grade.equals("A")) this.creditRate = ICustomDefine.A;
 				else if (grade.equals("B")) this.creditRate = ICustomDefine.B;
 				else if (grade.equals("C")) this.creditRate = ICustomDefine.C;
@@ -24,12 +27,16 @@ public class HighCreditAccount extends Account{
 		//신용계좌 : 잔고 + (잔고 * 기본이자) + (잔고 * 추가이자) + 입금액
 		@Override
 		public void deposit(int amount) {
-			
+			//기본 이자 계산
 		    int baseInterest = (int)(balance * interest);
+		    
+		    //신용등급에 따른 추가 이자 계산
 		    int extraInterest = (int)(balance * creditRate); 
 		    
+		    //최종 잔고계산식: 기존 잔고 + 기본이자 + 추가이자 + 입금액
 		    int total = balance + baseInterest + extraInterest + amount;
 		    
+		    // 새로운 잔고에 반영
 		    balance = total;
 		}
 		@Override

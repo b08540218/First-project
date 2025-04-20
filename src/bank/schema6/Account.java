@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 abstract class Account implements Serializable{
 	
-	protected String accNum;
-	protected String name;
-	protected int balance;
-	protected int interest;
+	protected String accNum; // 계좌번호
+	protected String name;	// 예금주 이름
+	protected int balance;	// 계좌 잔액
+	protected int interest;	// 이자율
 	
 	//생성자
 	public Account(String accNum, String name, int balance, int interest) {
@@ -47,6 +47,9 @@ abstract class Account implements Serializable{
 	
 	
 	//중복계좌확인 오버라이딩
+	/*
+		equals 오버라이딩: 계좌번호가 같으면 동일 계좌로 간주
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) return true; //같은 객체이면 true
@@ -56,6 +59,9 @@ abstract class Account implements Serializable{
 		return accNum.equals(otAccount.accNum); //계좌번호가 같으면 true
 	}
 	
+	/*
+		hashCode 오버라이딩: 계좌번호를 기준으로 해시값 생성
+	 */
 	@Override
 	public int hashCode() {
 		return accNum.hashCode(); //계좌번호를 기준으로 해시 생성
@@ -68,6 +74,7 @@ abstract class Account implements Serializable{
 				", 잔고=" + balance+ 
 				", 이자율=" + interest +"%";
 	}
+	
 	public void deposit(int amount) { //입 금 이 자
 		int creditRate = 0;
 		int interest = (int)(balance * creditRate);
