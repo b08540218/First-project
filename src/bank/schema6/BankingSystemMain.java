@@ -27,17 +27,17 @@ public class BankingSystemMain {
 			switch (key) {
 			case ICustomDefine.MAKE:
 				//계좌개설
-				System.out.println("계좌개설");
+//				System.out.println("계좌개설");
 				AccountManager.makeAccount();
 				break;
 			case ICustomDefine.DEPOSIT:
 				//입금
-				System.out.println("입   금");
+//				System.out.println("입   금");
 				AccountManager.depositMoney();
 				break;
 			case ICustomDefine.WITHDRAW:
 				//출금
-				System.out.println("출   금");
+//				System.out.println("출   금");
 				AccountManager.withdrawMoney();
 				break;
 			case ICustomDefine.INQUIRE:
@@ -47,11 +47,11 @@ public class BankingSystemMain {
 				break;
 				//계좌정보삭제
 			case ICustomDefine.DELETE:
-				System.out.println("계좌정보삭제");
+//				System.out.println("계좌정보삭제");
 				AccountManager.deleteAccount();
 				break;
 			case ICustomDefine.SAVE_OPTIONS:
-				System.out.println("저장옵션");
+//				System.out.println("저장옵션");
 				AccountManager.AutoSaveMenu();
 				break;
 			case ICustomDefine.EXIT: //프로그램종료

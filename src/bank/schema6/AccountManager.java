@@ -56,6 +56,7 @@ public class AccountManager implements ICustomDefine{
 	}
 	//자동 저장 기능을 설정하는 메뉴
 	public static void AutoSaveMenu() {
+		System.out.println("==========저장 옵션=============");
 		System.out.println("1. 자동저장 ON ");
 		System.out.println("2. 자동저장 OFF ");
 		String input = scan.nextLine();
@@ -83,7 +84,7 @@ public class AccountManager implements ICustomDefine{
 	}
 	
 	public static void showMenu() {
-			System.out.println("===========================");
+			System.out.println("==========메뉴 선택=============");
 			System.out.println("1. 계좌개설");
 			System.out.println("2. 입금");
 			System.out.println("3. 출금");
@@ -91,7 +92,7 @@ public class AccountManager implements ICustomDefine{
 			System.out.println("5. 계좌정보삭제");
 			System.out.println("6. 저장옵션");
 			System.out.println("7. 프로그램종료");
-			System.out.println("===========================");
+			System.out.println("==============================");
 		} 
 		
 	
@@ -101,7 +102,7 @@ public class AccountManager implements ICustomDefine{
 		
 		while (true) {
 	        try {
-	        	System.out.println("===========================");
+	        	System.out.println("==========계좌 선택=============");
 	            System.out.println("1. 보통예금계좌  2. 신용신뢰계좌");
 	            System.out.println("선택: ");
 	            String input = scan.nextLine(); 
@@ -117,7 +118,7 @@ public class AccountManager implements ICustomDefine{
 	        }
 	    }
 
-		System.out.println("===========================");
+		System.out.println("==========계좌 생성=============");
 		System.out.print("계좌번호: ");
 		String a = scan.nextLine();
 		System.out.print("이름: ");
@@ -172,6 +173,7 @@ public class AccountManager implements ICustomDefine{
 	// 입    금
 	public static void depositMoney()  {
 		try {
+		System.out.println("==========입   금=============");
 		System.out.print("계좌번호: ");
 		String a= scan.nextLine();
 		Account acc = findAccount(a);
@@ -202,6 +204,7 @@ public class AccountManager implements ICustomDefine{
 	// 출    금
 	public static void withdrawMoney() {
 		try {
+			System.out.println("==========출   금=============");
 			System.out.print("계좌번호: ");
 			String a= scan.nextLine();
 			Account acc =findAccount(a);
@@ -251,6 +254,7 @@ public class AccountManager implements ICustomDefine{
 	}
 	// 계좌정보 삭제
 	public static void deleteAccount() {
+		System.out.println("==========계좌정보삭제=============");
 		System.out.println("삭제할 계좌번호: ");
 		String accNum = scan.nextLine();
 		Account acc = findAccount(accNum);
